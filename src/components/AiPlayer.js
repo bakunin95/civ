@@ -3,13 +3,16 @@ import React, { useEffect } from 'react';
 const AiPlayer = ({ map, units, resources, onActionComplete }) => {
     // Randomly select an action for the AI to perform
     const chooseAction = () => {
+
         const actions = ['moveUnit', 'buildCity', 'buildUnit'];
         const randomAction = actions[Math.floor(Math.random() * actions.length)];
         return randomAction;
+
     };
 
     // AI unit movement logic
     const moveUnit = () => {
+
         // Randomly pick a unit to move
         const unitToMove = units[Math.floor(Math.random() * units.length)];
 
@@ -23,10 +26,12 @@ const AiPlayer = ({ map, units, resources, onActionComplete }) => {
 
         // Call the onActionComplete callback to update the game state
         onActionComplete('moveUnit', unitToMove, newPosition);
+
     };
 
     // AI city-building logic
     const buildCity = () => {
+
         // Randomly choose a position on the map for the city
         const cityPosition = [
             Math.floor(Math.random() * 10),
@@ -37,10 +42,12 @@ const AiPlayer = ({ map, units, resources, onActionComplete }) => {
 
         // Call the onActionComplete callback to update the game state
         onActionComplete('buildCity', cityPosition);
+
     };
 
     // AI unit-building logic
     const buildUnit = () => {
+
         // Check if the AI has enough resources to build a unit
         if (resources >= 50) {
             console.log('AI is building a new unit');
@@ -55,6 +62,7 @@ const AiPlayer = ({ map, units, resources, onActionComplete }) => {
         } else {
             console.log('AI does not have enough resources to build a unit');
         }
+
     };
 
     // AI action logic that is triggered every turn

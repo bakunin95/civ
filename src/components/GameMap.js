@@ -4,7 +4,7 @@ import City from './City';
 
 const GameMap = ({ mapData, onMoveUnit }) => {
   const handleUnitClick = (unit) => {
-    // Handle unit click (e.g., to move the unit)
+
     console.log('Unit clicked', unit);
   };
 
@@ -16,25 +16,29 @@ const GameMap = ({ mapData, onMoveUnit }) => {
             <div
               key={tileIndex}
               style={{
+
                 backgroundColor: tile === 0 ? 'green' : tile === 1 ? 'blue' : 'brown',
+
                 padding: '20px',
                 border: '1px solid black',
               }}
             >
+
               {tile === 0 && 'Grass'}
               {tile === 1 && 'Water'}
               {tile === 2 && 'Forest'}
+
             </div>
           ))}
         </div>
       ))}
-      {/* Render units */}
+
       {mapData.flatMap((row) =>
         row.units.map((unit, index) => (
           <Unit key={index} unit={unit} onClick={handleUnitClick} />
         ))
       )}
-      {/* Render cities */}
+
       {mapData.flatMap((row) =>
         row.cities.map((city, index) => <City key={index} city={city} />)
       )}
