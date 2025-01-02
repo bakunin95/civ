@@ -4,15 +4,22 @@ import TurnManager from './components/TurnManager';
 
 const Game = () => {
   const [gameState, setGameState] = useState({
-    mapData: [
-      { cities: [{ position: [1, 1] }], units: [] },
-      { cities: [], units: [] },
-      // More map data
-    ],
+    mapData: generateInitialMap(),
     currentTurn: 'Player', // Player or AI
     selectedPosition: [0, 0],
     resources: 100,
   });
+
+  function generateInitialMap() {
+    const mapData = [];
+    for (let i = 0; i < 10; i++) {
+      mapData.push([]);
+      for (let j = 0; j < 10; j++) {
+        mapData[i].push(Math.floor(Math.random() * 3)); // Random land types
+      }
+    }
+    return mapData;
+  }
 
   const onMoveUnit = (unit, newPosition) => {
     const updatedMapData = [...gameState.mapData];
