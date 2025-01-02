@@ -4,11 +4,14 @@ import TurnManager from './components/TurnManager';
 
 const Game = () => {
   const [gameState, setGameState] = useState({
+
     mapData: generateInitialMap(),
+
     currentTurn: 'Player', // Player or AI
     selectedPosition: [0, 0],
     resources: 100,
   });
+
 
   function generateInitialMap() {
     const mapData = [];
@@ -20,6 +23,7 @@ const Game = () => {
     }
     return mapData;
   }
+
 
   const onMoveUnit = (unit, newPosition) => {
     const updatedMapData = [...gameState.mapData];
