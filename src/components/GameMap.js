@@ -1,35 +1,40 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Unit from './Unit';
 import City from './City';
 
 const GameMap = ({ mapData, onMoveUnit }) => {
-  const [selectedUnit, setSelectedUnit] = useState(null);
-
   const handleUnitClick = (unit) => {
-    if (selectedUnit === unit) return;
-
-    setSelectedUnit(unit);
-  };
-
-  const handleMoveUnit = () => {
-    if (!selectedUnit) return;
-    onMoveUnit(selectedUnit, mapData.selectedPosition);
-    setSelectedUnit(null);
+    // Select the unit to move
+    console.log('Unit clicked', unit);
   };
 
   return (
     <div>
-      {mapData.cities.map((city, i) => (
-        <City key={i} city={city} onClick={() => handleUnitClick(city)} position={city.position} />
+      {mapData.map((row, rowIndex) => (
+        <div key={rowIndex} style={{ display: 'flex' }}>
+          {row.map((tile, tileIndex) => (
+            <div
+              key={tileIndex}
+              style={{
+                backgroundColor: tile === 'grass' ? 'green' : tile === 'water' ? 'blue' : 'brown',
+                padding: '20px',
+                border: '1px solid black',
+              }}
+            >
+              {tile}
+            </div>
+          ))}
+        </div>
       ))}
-      {mapData.units.map((unit, i) => (
-        <Unit
-          key={i}
-          unit={unit}
-          onClick={(unit) => handleUnitClick(unit)}
-          position={unit.position}
-        />
-      ))}
+      {/* Render cities and units */}
+      {mapData.flatMap((row) =>
+        row.units.map((unit, index) => (
+          <Unit key={index} unit={unit} onClick={handleUnitClick} />
+        ))
+      )}
+      {mapData.flatMap((row) =>
+        row.cities.map((city, index) => <City key={index} city={city} />)
+      )}
     </div>
   );
 };

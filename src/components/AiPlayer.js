@@ -2,37 +2,28 @@ import React from 'react';
 
 const AiPlayer = ({ map, units, resources }) => {
     const chooseAction = () => {
-        // Choose a random action
-        if (map.landType === 1) { // Grass
+        if (map.landType === 1) {
             return 'moveUnit';
-        } else if (map.landType === 2) { // Water
+        } else if (map.landType === 2) {
             return 'buildCity';
-        } else { // Forest
+        } else {
             return 'buildUnit';
         }
     };
 
     const moveUnit = () => {
-        // Move a random unit from the map
-        units.forEach((unit, index) => {
-            if (Math.random() < 0.5) { // Randomly choose a unit to move
-                console.log(`Moving unit ${index + 1}`);
-            }
-        });
+        // Implement AI unit movement
+        console.log('AI is moving a unit');
     };
 
     const buildCity = () => {
-        // Build a random city on the map
-        let x = Math.floor(Math.random() * 10); // Random x-coordinate
-        let y = Math.floor(Math.random() * 10); // Random y-coordinate
-        console.log(`Building city at (${x}, ${y})`);
+        // Implement AI city building
+        console.log('AI is building a city');
     };
 
     const buildUnit = () => {
-        // Build a random unit on the map
-        let x = Math.floor(Math.random() * 10); // Random x-coordinate
-        let y = Math.floor(Math.random() * 10); // Random y-coordinate
-        console.log(`Building unit at (${x}, ${y})`);
+        // Implement AI unit building
+        console.log('AI is building a unit');
     };
 
     return (
